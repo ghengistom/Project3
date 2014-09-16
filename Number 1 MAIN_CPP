@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+#include "THREE.h";
+using namespace std;
+
+int main()
+{
+	int X=7;
+	THREE <int, 7> P;
+
+
+
+	system("pause");
+	return 0;
+}
