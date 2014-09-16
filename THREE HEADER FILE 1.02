@@ -34,7 +34,7 @@ template <class n>
 	Data.open("three.txt", ios::in);
 	for (int i = 0; i < 7; ++i)
 	{
-		Data >> a[i].name;
+		Data.get(a[i].name);
 		Data >> a[i].age;
 		Data >> a[i].gpa;
 	}			  
