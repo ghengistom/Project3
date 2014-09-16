@@ -1,45 +1,53 @@
+#ifndef THREE_H_INCLUDED
+#define THREE_H_INCLUDED
 #include <iostream>
 #include <iomanip>
 #include <string>
 
 
-template <int n>
+template <class RECORD>
 class THREE
 {
-private: struct RECORD
-{
-	string name;
-	int age;
-	float gpa;
-};
-		 RECORD a[n];
-public: void CopyData(string fname)						//copy data from file "three.txt" into array a of size 7
-{
-	fstream Data;
-	Data.open("three.txt", ios::in);
-	for (int i = 0; i < 7; ++i)
+	private: 
+	struct RECORD
 	{
-		Data.getline(a[i].name, 20, ' ');
-		Data >> a[i].age;
-		Data >> a[i].gpa;
-	}
-	Data.close();
-};
-		void DisplayAll()								//diplay all records in array a
+		string name;
+		int age;
+		float gpa;
+	};
+			 RECORD a[n];
+	public: 
+	
+	void CopyData(string fname)						//copy data from file "three.txt" into array a of size 7
+	{
+		fstream Data;
+		Data.open("three.txt", ios::in);
+		for (int i = 0; i < 7; ++i)
 		{
-			cout << "Name		Age			Gpa";
-			for (int i = 0; i < 7; ++i)
+			Data.getline(a[i].name, 20, ' ');
+			Data >> a[i].age;
+			Data >> a[i].gpa;
+		}
+		Data.close();
+	};
+			void DisplayAll()								//diplay all records in array a
 			{
-				a[i].Name << "\t" << a[i].Age << "\t" << a[i].Gpa;
-			}
-		};
-		float FindAgeAverage()
-		{
+				cout << "Name		Age			Gpa";
+				for (int i = 0; i < 7; ++i)
+				{
+					a[i].Name << "\t" << a[i].Age << "\t" << a[i].Gpa;
+				}
+			};
+			float FindAgeAverage()
+			{
 
-		};
-		//float AgeAve = FindAgeAverage();				//find and return their age average
-		//void FindGpaAve(float GpaAve);				//find and return their GPA average
-		//void DisplayAverage(AgeAVe, GpaAve);		//display both averages
-		//void DisplayAbove(GpaAve);					//display the name of those whose GPA>=GpaAVe
-		//~THREE(){};
+			};
+			//float AgeAve = FindAgeAverage();				//find and return their age average
+			//void FindGpaAve(float GpaAve);				//find and return their GPA average
+			//void DisplayAverage(AgeAVe, GpaAve);		//display both averages
+			//void DisplayAbove(GpaAve);					//display the name of those whose GPA>=GpaAVe
+			//~THREE(){};
 };
+
+
+#endif
