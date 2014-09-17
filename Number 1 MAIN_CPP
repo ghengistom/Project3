@@ -1,15 +1,22 @@
 #include <iostream>
 #include <string>
 #include "THREE.h";
+
 using namespace std;
 
 int main()
 {
-	int X=7;
-	THREE <int, 7> P;
+	float GpaAve=0;
+	int AgeAve;
 
-
-
+	cout << "HI";
+	THREE <7>P;
+	P.CopyData("three.txt");
+	P.DisplayAll();
+	AgeAve = P.FindAgeAverage();
+	P.FindGpaAve(GpaAve);
+	P.DisplayAverage(AgeAve, GpaAve);
+	P.DisplayAbove(GpaAve);
 	system("pause");
 	return 0;
 }
