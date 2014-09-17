@@ -1,0 +1,61 @@
+#ifndef THREE_H_INCLUDED
+#define THREE_H_INCLUDED
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+
+template <int n>
+class THREE
+{
+	private: 
+	struct RECORD
+	{
+		string name;
+		int age;
+		float gpa;
+	};
+			 RECORD a[n];
+	public: 
+
+			void CopyData(string fname);
+			void DisplayAll();								//display all records in array a
+			int = FindAgeAverage();				//find and return their age average
+			//void FindGpaAve(float& GpaAve);				//find and return their GPA average
+			//void DisplayAverage(AgeAVe, GpaAve);		//display both averages
+			//void DisplayAbove(GpaAve);					//display the name of those whose GPA>=GpaAVe
+			//~THREE();
+};
+
+template <int n>
+void THREE<n>::CopyData(string fname)
+{
+	fstream Data;
+		Data.open(fname, ios::in);
+		for (int i = 0; i < n; ++i)
+		{
+			getline(Data, a[i].name, '\t' );
+			//cin.ignore();
+			
+			Data >> a[i].age;
+			Data >> a[i].gpa;
+		}
+		Data.close();
+		
+}
+template <int n>
+void THREE <n>:: DisplayAll()
+{
+	for(int i=0;i<n;++i)
+		{
+			cout<<a[i].name<<"\t"<<a[i].age<<"\t"<<a[i].gpa<<endl;
+		}
+}
+template<int n>
+int THREE <n>:: FindAgeAverage()
+{
+
+}
+
+#endif
