@@ -1,0 +1,118 @@
+#ifndef THREE_H_INCLUDED
+#define THREE_H_INCLUDED
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+
+//==============================THREE CLASS==================================================================
+template <int n>
+class THREE
+{
+private:
+	struct RECORD
+	{
+		string name;
+		int age;
+		float gpa;
+	};
+	RECORD a[n];
+public:
+
+	void CopyData(string fname);						//copy data from file "three.txt" into array a of size 7
+	void DisplayAll();									//display all records in array a
+	int FindAgeAverage();								//find and return their age average
+	void FindGpaAve(float& GpaAve);						//find and return their GPA average
+	void DisplayAverage(int AgeAve,float GpaAve);		//display both averages
+	void DisplayAbove(float GpaAve);					//display the name of those whose GPA>=GpaAVe
+	~THREE();
+};
+//==============================END THREE CLASS==================================================================
+
+//==============================Copy Data Method==================================================================
+template <int n>
+void THREE<n>::CopyData(string fname)
+{
+	fstream Data;
+	Data.open(fname, ios::in);
+	for (int i = 0; i < n; ++i)
+	{
+		getline(Data, a[i].name, '\t');					//use getline with 3 parameters(scanner, variablein, delimiter)
+		Data >> a[i].age;
+		Data >> a[i].gpa;
+	}
+	Data.close();
+
+}
+//==============================End Copy Data Method==================================================================
+
+//==============================DisplayAll Method==================================================================
+template <int n>
+void THREE <n>::DisplayAll()
+{
+	for (int i = 0; i<n; ++i)
+	{
+		cout << a[i].name << "\t" << a[i].age << "\t" << a[i].gpa << endl;
+	}
+}
+//==============================End DisplayAll Method==================================================================
+
+//==============================Find Average Method==================================================================
+template<int n>
+int THREE <n>::FindAgeAverage()
+{
+	int AgeAve = 0;
+	int TotalAge = 0;
+	for (int i = 0; i < n; ++i)
+		TotalAge += a[i].age;
+		AgeAve = TotalAge / n;
+		return AgeAve;
+};
+//==============================End Find Average Method==================================================================
+
+//==============================FindGpaAve Method==================================================================
+template <int n>
+void THREE <n>::FindGpaAve(float &GpaAve)
+{
+	float GpaTotal = 0;
+	for (int i = 0; i < n; ++i)
+		GpaTotal += a[i].gpa;
+	GpaAve = GpaTotal / n;
+};
+//==============================End FindGpaAve Method==================================================================
+
+//==============================DisplayAverage Method==================================================================
+template <int n>
+void THREE<n>::DisplayAverage(int AgeAve,float GpaAve)
+{
+	cout << fixed << showpoint << setprecision(2);
+	cout << "\n\nTheir age average is: " << AgeAve;
+	cout << "\nTheirGPA average is: " << GpaAve;
+};
+//==============================End DisplayAverage Method==================================================================
+
+//==============================DisplayAbove Method==================================================================
+template <int n>
+void THREE<n>::DisplayAbove(float GpaAve)
+{
+	cout << "\n\nThese are the names of those with GPA's above average:\n\n";
+	for (int i = 0; i < n; ++i)
+	{
+		if (a[i].gpa > GpaAve)
+		{
+			cout << a[i].name;
+		}
+		
+	}
+};
+//==============================End DisplayAbove Method==================================================================
+
+//==============================Destructor Method==================================================================
+template<int n>
+THREE <n>::~THREE()
+{
+		
+};
+//==============================End Destructor Method==================================================================
+#endif
