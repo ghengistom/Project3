@@ -1,0 +1,58 @@
+//---------------------------------------
+//		Name		Tom Bernard
+//		Course		Cpsc-131, section 02
+//		Project		No.3 part 1
+//		Due Date	9/18/14
+//		Instructor	Prof. Ray Ahmadnia
+//
+//	purpose: This program will take take from a file, do calculations, and display them  
+//				Fall-2014
+//--------------------------------------
+#include <iostream>
+#include <string>
+#include "THREE.h";
+
+using namespace std;
+
+int main()
+{
+	float GpaAve=0;
+	int AgeAve;
+
+	THREE <7>P;
+	P.CopyData("three.txt");
+	P.DisplayAll();
+	AgeAve = P.FindAgeAverage();
+	P.FindGpaAve(GpaAve);
+	P.DisplayAverage(AgeAve, GpaAve);
+	P.DisplayAbove(GpaAve);
+	cout << endl;
+	system("pause");
+	return 0;
+}
+/*========================================================================================================================
+Jacqueline Kennedy      33      3.3
+
+Claudia Johnson 25      2.5
+
+Pat Nixon       27      2.7
+
+Rosalyn Carter  26      2.6
+
+Nancy Reagan    19      3.5
+
+Barbara Bush    21      3.4
+
+Hillary Clinton 25      2.5
+
+
+Their age average is: 25
+TheirGPA average is: 2.93
+
+These are the names of those with GPA's above average:
+
+Jacqueline Kennedy
+Nancy Reagan
+Barbara Bush
+
+========================================================================================================================*/
